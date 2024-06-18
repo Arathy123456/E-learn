@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Dashboard | Dashboard</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static './admin/img/svg/logo.svg' %}" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="{% static './admin/css/style.min.css' %}">
+    <style>
+
+ table{
+          font-family:arial,san-serif;
+          border-collapse:collapse;
+          width:100%;
+          }
+
+          td, th{
+          border:1px solid #136ad5;
+          text-align:left;
+          padding:8px;
+          }
+
+          tr:nth-child(even){
+          background-color:black;
+          }
+    </style>
+</head>
+
+<body>
+  <div class="layer"></div>
+<!-- ! Body -->
+<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+<div class="page-flex">
+  <!-- ! Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-start">
+        <div class="sidebar-head">
+            <a class="logo-wrapper" title="Home">
+                <span class="sr-only">Home</span>
+                <span class="icon logo" aria-hidden="true"></span>
+                <div class="logo-text">
+                    <span class="logo-title">Admin</span>
+                    <span class="logo-subtitle">Dashboard</span>
+                </div>
+
+            </a>
+            <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                <span class="sr-only">Toggle menu</span>
+                <span class="icon menu-toggle" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="sidebar-body">
+            <ul class="sidebar-body-menu">
+                <li>
+                    <a href="/verify"><span class="icon home" aria-hidden="true"></span>Dashboard</a>
+                </li>
+                <br><br>
+                <li>
+                    <a  href="/userview">
+                        <span class="icon document" aria-hidden="true"></span>Registered Users
+
+                    </a>
+
+                </li>
+
+
+                <br><br>
+                <li>
+                    <a href="/viewcourse">
+                        <span class="icon folder" aria-hidden="true"></span>Course Registered
+
+                    </a>
+
+                </li>
+                <br><br>
+                <li>
+                    <a class="active" href="/viewbook">
+                        <span class="icon image" aria-hidden="true"></span>Course Booked
+                    </a>
+
+                </li><br><br>
+                <li>
+                    <a href="##">
+                        <span class="icon paper" aria-hidden="true"></span>3 Day Trial Booked
+
+                    </a>
+
+                </li><br><br>
+                <li>
+                    <a href="##">
+                        <span class="icon image" aria-hidden="true"></span>User Certificates
+                    </a>
+
+                </li><br><br>
+                <li>
+                    <a href="##">
+                        <span class="icon image" aria-hidden="true"></span>Placement Application
+                    </a>
+                </li><br><br>
+
+
+            </ul>
+
+        </div>
+    </div>
+
+</aside>
+  <div class="main-wrapper">
+    <!-- ! Main nav -->
+    <nav class="main-nav--bg">
+  <div class="container main-nav">
+    <div class="main-nav-start">
+      <div class="search-wrapper">
+        <i data-feather="search" aria-hidden="true"></i>
+        <input type="text" placeholder="Enter keywords ..." required>
+      </div>
+    </div>
+    <div class="main-nav-end">
+      <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+        <span class="sr-only">Toggle menu</span>
+        <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+      </button>
+      <div class="lang-switcher-wrapper">
+        <button class="lang-switcher transparent-btn" type="button">
+          EN
+          <i data-feather="chevron-down" aria-hidden="true"></i>
+        </button>
+
+      </div>
+      <button class="theme-switcher gray-circle-btn" type="button" title="Switch theme">
+        <span class="sr-only">Switch theme</span>
+        <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+        <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+      </button>
+      <div class="nav-user-wrapper">
+        <button href="##" class="nav-user-btn dropdown-btn" title="My profile" type="button">
+          <span class="sr-only">My profile</span>
+          <span class="nav-user-img">
+            <picture><source srcset="{% static './admin/img/avatar/avatar-illustrated-02.webp' %}" type="image/webp"><img src="{% static './admin/img/avatar/avatar-illustrated-02.png' %}" alt="User name"></picture>
+          </span>
+        </button>
+        <ul class="users-item-dropdown nav-user-dropdown dropdown">
+
+
+          <li><a class="danger" href="##">
+              <i data-feather="log-out" aria-hidden="true"></i>
+              <span>Log out</span>
+            </a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+    <!-- ! Main -->
+    <main class="main users chart-page" id="skip-target">
+      <div class="container">
+        <h2 class="main-title">Course Booked</h2>
+        <div class="row stat-cards">
+
+        </div>
+
+            <div class="users-table table-wrapper">
+                  {% if data %}
+                   <table>
+                    <tr>
+                         <th style="color:blue;">Name</th>
+                         <th style="color:blue;">Email</th>
+                         <th style="color:blue;">Contact No</th>
+                        <th style="color:blue;">Course</th>
+                        <th style="color:blue;">Amount</th>
+                        <th style="color:blue;">Status</th>
+
+                    </tr>
+                    {% for i in data %}
+                    <tr>
+                         <td style="color:#136ad5;">{{i.name}} </td>
+                         <td style="color:#136ad5;">{{i.gmail}}</td>
+                         <td style="color:#136ad5;">{{i.phoneno}}</td>
+                        <td style="color:#136ad5;">{{i.course}}</td>
+                        <td style="color:#136ad5;">{{i.amount}}</td>
+                        <td style="color:#136ad5;">
+                {% if payment.is_approved %}
+                            <a>Approved</a>
+                {% else %}
+                    Pending Approval
+                {% endif %}
+            </td>
+                       <form method="post" action="">
+            {% csrf_token %}
+            <button type="submit">Approve Payment</button>
+        </form>
+
+                    </tr>
+                    {% endfor %}
+                    </table>
+               {% else %}
+               <h4 class="wow-fadeInUp" data-wow-delay="0.4s">No Course Booked</h4>
+               {% endif %}
+
+            </div>
+          </div>
+          <div class="col-lg-3">
+<!--&lt;!&ndash;            <article class="customers-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;              <canvas id="customersChart" aria-label="Customers statistics" role="img"></canvas>&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash;              <p class="customers__title">New Customers <span>+958</span></p>&ndash;&gt;-->
+<!--&lt;!&ndash;              <p class="customers__date">28 Daily Avg.</p>&ndash;&gt;-->
+<!--&lt;!&ndash;              <picture><source srcset="./img/svg/customers.svg" type="image/webp"><img src="./img/svg/customers.svg" alt=""></picture> &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            </article>&ndash;&gt;-->
+<!--            <article class="white-block">-->
+<!--              <div class="top-cat-title">-->
+<!--                <h3>Top Courses</h3>-->
+<!--                <p>5 Top Courses</p>-->
+<!--              </div>-->
+<!--              <ul class="top-cat-list">-->
+<!--                <li>-->
+<!--                  <a>-->
+<!--                    <div class="top-cat-list__title">-->
+<!--                      Python <span>1 students</span>-->
+<!--                    </div>-->
+<!--                  </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a>-->
+<!--                    <div class="top-cat-list__title">-->
+<!--                      Data Science <span>1 students</span>-->
+<!--                    </div>-->
+
+<!--                  </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a>-->
+<!--                    <div class="top-cat-list__title">-->
+<!--                      Flutter <span>1 students</span>-->
+<!--                    </div>-->
+
+<!--                  </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a >-->
+<!--                    <div class="top-cat-list__title">-->
+<!--                      Digital Marketing <span>1 students</span>-->
+<!--                    </div>-->
+
+<!--                  </a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                  <a>-->
+<!--                    <div class="top-cat-list__title">-->
+<!--                      Mern Stack <span>1 students</span>-->
+<!--                    </div>-->
+
+<!--                  </a>-->
+<!--                </li>-->
+
+<!--              </ul>-->
+<!--            </article>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </main>
+    <!-- ! Footer -->
+    <footer class="footer">
+  <div class="container footer--flex">
+    <div class="footer-start">
+      <p>2021 © Elegant Dashboard - <a href="elegant-dashboard.com" target="_blank"
+          rel="noopener noreferrer">elegant-dashboard.com</a></p>
+    </div>
+
+  </div>
+</footer>
+  </div>
+</div>
+<!-- Chart library -->
+<script src="{% static './admin/plugins/chart.min.js' %}"></script>
+<!-- Icons library -->
+<script src="{% static './admin/plugins/feather.min.js' %}"></script>
+<!-- Custom scripts -->
+<script src="{% static './admin/js/script.js' %}"></script>
+</body>
+
+</html>
